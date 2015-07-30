@@ -77,9 +77,20 @@ exports.destroy = function(req,res){
 
 // GET /quizes
 exports.index = function(req,res){
+	if(!req.query.search){
 		models.Quiz.findAll().then(function(quizes){
+				res.render('quizes/index.ejs',{quizes: quizes, errors: []});
+		});
+	}
+	else{
+		var condicion = ('%' + (req.query.search).trim() + '%').replace(' ','%');
+		models.Quiz.findAll({
+			where: ["pregunta like ?", condicion],
+			order: [['pregunta','ASC']]
+		}).then(function(quizes){
 			res.render('quizes/index.ejs',{quizes: quizes, errors: []});
 		});
+	}
 }
 
 // GET /quizes/:id
