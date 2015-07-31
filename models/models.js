@@ -32,7 +32,7 @@ exports.Quiz = Quiz; // exportar la definicion de la tabla Quiz
 // Importar la definicion de la tabla Comment
 var Comment = sequelize.import(path.join(__dirname,'comment'));
 
-Comment.belongsTo(Quiz); // Indica que un comment pertenece a un quiz 
+Comment.belongsTo(Quiz); // Indica que un comment pertenece a un quiz
 Quiz.hasMany(Comment); //  Indica que un quiz puede tener muchos comments
 
 exports.Comment = Comment; // exportar la definicion de la tabla Comment
