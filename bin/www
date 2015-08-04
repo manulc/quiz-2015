@@ -4,10 +4,10 @@ var app = require('../app');
 var fs = require('fs');
 var https = require('https');
 
-var options = {
+/*var options = { // Comentado para despliegue en Heroku,descomentar para local
   key: fs.readFileSync('certs/quiz-2015-key.pem').toString(),
   cet : fs.readFileSync('certs/quiz-2015-cert.pem').toString()
-};
+};*/
 
 app.set('port', process.env.PORT || 3000);
 
@@ -15,7 +15,7 @@ var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
 
-var serverSecure = https.createServer(options,app);
+/*var serverSecure = https.createServer(options,app); // Comentado para despliegue en Heroku,descomentar para local
 serverSecure.listen(8443,function(){
   debug('Express server listening on port ' + server.address().port);
-});
+});*/
